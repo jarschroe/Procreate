@@ -62,9 +62,12 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ControlPoint.cs" />
     <Compile Include="GameObject.cs" />
     <Compile Include="GameObjectFactory.cs" />
     <Compile Include="Generator.cs" />
+    <Compile Include="Level.cs" />
+    <Compile Include="LevelElement.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

@@ -20,9 +20,14 @@ namespace Procreate
     /// </summary>
     public partial class MainWindow : Window
     {
+        public ControlPoint ControlPoint { get; set; }
+
         public MainWindow()
         {
             InitializeComponent();
+
+            // load Jared's Procreate software
+            this.ControlPoint = new ControlPoint();
         }
     }
 }

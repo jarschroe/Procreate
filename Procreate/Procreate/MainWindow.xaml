@@ -9,57 +9,56 @@
             <RowDefinition Height="5*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="131*"/>
-            <ColumnDefinition Width="28*"/>
-            <ColumnDefinition Width="221"/>
+            <ColumnDefinition Width="633*"/>
+            <ColumnDefinition Width="133*"/>
+            <ColumnDefinition Width="250"/>
         </Grid.ColumnDefinitions>
-        <Canvas Background="LightGray" HorizontalAlignment="Left" Height="647" VerticalAlignment="Top" Width="635" Grid.Row="1" Margin="10,10,0,0"/>
-        <TabControl Grid.Column="3" HorizontalAlignment="Left" Height="659" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="200">
+        <TabControl Grid.Column="2" Height="659" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Left" Width="230">
             <TabItem Header="Method">
                 <Grid Background="#FFE5E5E5">
                     <Button Content="New" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75"/>
-                    <Canvas HorizontalAlignment="Left" Height="210" Margin="10,37,0,0" VerticalAlignment="Top" Width="170">
-                        <Label Content="Name:" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="10" Canvas.Top="10"/>
-                        <Label Content="Algorithm:" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="10" Canvas.Top="41"/>
-                        <Label Content="Parameters:" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="10" Canvas.Top="72"/>
-                        <TextBox HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="82" Canvas.Left="76" Canvas.Top="13"/>
-                        <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="82" Canvas.Left="76" Canvas.Top="45"/>
-                        <Button Content="Save" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Canvas.Left="10" Canvas.Top="178"/>
-                    </Canvas>
+                    <Grid HorizontalAlignment="Left" Height="210" Margin="10,37,0,0" VerticalAlignment="Top" Width="170">
+                        <Label Content="Name:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0"/>
+                        <Label Content="Algorithm:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,41,0,0"/>
+                        <Label Content="Parameters:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,72,0,0"/>
+                        <TextBox HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="82" Margin="76,13,0,0"/>
+                        <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="82" Margin="76,45,0,0"/>
+                        <Button Content="Save" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="10,178,0,0"/>
+                    </Grid>
                 </Grid>
             </TabItem>
             <TabItem Header="GameObject">
                 <Grid Background="#FFE5E5E5">
                     <Button Content="New" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75"/>
-                    <Canvas HorizontalAlignment="Left" Height="377" Margin="10,37,0,0" VerticalAlignment="Top" Width="170">
-                        <Label Content="Name:" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="10" Canvas.Top="10"/>
-                        <Label Content="Type:" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="10" Canvas.Top="41"/>
-                        <Label Content="Image:" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="10" Canvas.Top="72"/>
-                        <TextBox HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="106" Canvas.Left="54" Canvas.Top="13"/>
-                        <Button Content="Save" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Canvas.Left="10" Canvas.Top="320"/>
-                        <TextBox HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="104" Canvas.Left="56" Canvas.Top="43"/>
-                        <TextBox Height="23" Canvas.Left="56" TextWrapping="Wrap" Text="TextBox" Canvas.Top="75" Width="104"/>
-                        <Label Content="Appearance:" Canvas.Left="10" Canvas.Top="103"/>
-                        <TextBox Height="23" Canvas.Left="86" TextWrapping="Wrap" Text="50" Canvas.Top="106" Width="44"/>
-                        <Label Content="%" Canvas.Left="130" Canvas.Top="104" Width="25"/>
-                        <Label Content="Preview:" Canvas.Left="9" Canvas.Top="134"/>
-                        <Image Height="150" Canvas.Left="10" Canvas.Top="165" Width="150"/>
-                    </Canvas>
+                    <Grid HorizontalAlignment="Left" Height="377" Margin="10,37,0,0" VerticalAlignment="Top" Width="170">
+                        <Label Content="Name:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0"/>
+                        <Label Content="Type:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,41,0,0"/>
+                        <Label Content="Image:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,72,0,0"/>
+                        <TextBox HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="106" Margin="54,13,0,0"/>
+                        <Button Content="Save" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="9,345,0,0"/>
+                        <TextBox HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="104" Margin="56,43,0,0"/>
+                        <TextBox TextWrapping="Wrap" Text="TextBox" Margin="56,75,10,279"/>
+                        <Label Content="Appearance:" Margin="10,103,84,248"/>
+                        <TextBox TextWrapping="Wrap" Text="50" Margin="86,106,40,248"/>
+                        <Label Content="%" Margin="130,104,15,247"/>
+                        <Label Content="Preview:" Margin="9,134,108,217"/>
+                        <Image Margin="10,165,10,62" />
+                    </Grid>
                 </Grid>
             </TabItem>
-            <TabItem Header="LevelObject">
+            <TabItem Header="LevelElement">
                 <Grid Background="#FFE5E5E5">
-                    <Canvas HorizontalAlignment="Left" Height="377" Margin="10,37,0,0" VerticalAlignment="Top" Width="170">
-                        <Label Content="Name:" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="10" Canvas.Top="10"/>
-                        <Label Content="Type:" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="10" Canvas.Top="41"/>
-                        <Label Content="Image:" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="10" Canvas.Top="72"/>
-                        <TextBox HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="106" Canvas.Left="54" Canvas.Top="13"/>
-                        <Button Content="Save" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Canvas.Left="10" Canvas.Top="284"/>
-                        <TextBox HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="104" Canvas.Left="56" Canvas.Top="43"/>
-                        <TextBox Height="23" Canvas.Left="56" TextWrapping="Wrap" Text="TextBox" Canvas.Top="75" Width="104"/>
-                        <Label Content="Preview:" Canvas.Left="10" Canvas.Top="98"/>
-                        <Image Height="150" Canvas.Left="10" Canvas.Top="124" Width="150"/>
-                    </Canvas>
+                    <Grid HorizontalAlignment="Left" Height="377" Margin="10,37,0,0" VerticalAlignment="Top" Width="170">
+                        <Label Content="Name:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0"/>
+                        <Label Content="Type:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,41,0,0"/>
+                        <Label Content="Image:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,72,0,0"/>
+                        <TextBox HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="106" Margin="54,13,0,0"/>
+                        <Button Content="Save" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="10,345,0,0"/>
+                        <TextBox HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="104" Margin="56,43,0,0"/>
+                        <TextBox TextWrapping="Wrap" Text="TextBox" Margin="56,75,10,279"/>
+                        <Label Content="Preview:" Margin="10,98,107,253"/>
+                        <Image Margin="10,124,10,103"/>
+                    </Grid>
                 </Grid>
             </TabItem>
         </TabControl>
@@ -69,6 +68,7 @@
             </MenuItem>
         </Menu>
         <ScrollViewer Background="LightGray" Grid.Column="1" HorizontalAlignment="Left" Height="620" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="120"/>
-        <Button Content="Generate" Grid.Column="1" HorizontalAlignment="Left" Margin="10,635,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75"/>
+        <Button Content="Generate" Grid.Column="1" HorizontalAlignment="Left" Margin="10,635,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Height="22"/>
+        <Grid HorizontalAlignment="Left" Height="659" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="621"/>
     </Grid>
 </Window>
