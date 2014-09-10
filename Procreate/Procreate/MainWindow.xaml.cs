@@ -28,6 +28,8 @@ namespace Procreate
 
             // load Jared's Procreate software
             this.ControlPoint = new ControlPoint();
+
+            Level.ItemsSource = this.ControlPoint.Level.elements;
         }
     }
 }

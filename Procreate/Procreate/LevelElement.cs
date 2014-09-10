@@ -26,6 +26,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using System.Windows.Media.Imaging;
 
 namespace Level
 {
@@ -35,6 +36,29 @@ namespace Level
         public string Type { get; set; }
         public string ImagePath { get; set; }
         public Image Image { get; set; }
+
+        static int ImageWidth = 32;
+
+        public LevelElement(string path)
+        {
+            this.Name = "Name";
+            this.ImagePath = path;
+            this.Image = new Image();
+            Image.Width = ImageWidth;
+        }
+
+        public void Init()
+        {
+            // load the image (code adapted from http://msdn.microsoft.com/en-us/library/ms748873(v=vs.110).aspx?cs-save-lang=1&cs-lang=csharp#_displayingimages)
+            BitmapImage source = new BitmapImage();
+            // load the image source
+            source.BeginInit();
+            source.UriSource = new Uri(ImagePath, UriKind.RelativeOrAbsolute);
+            source.DecodePixelWidth = ImageWidth; 
+            source.EndInit();
+            // set the image source
+            Image.Source = source;
+        }
 
         public void Serialise() { }
         public void Load() { }

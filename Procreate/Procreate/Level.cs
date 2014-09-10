@@ -34,6 +34,8 @@ namespace Level
         public int width { get; set; }
         public int height { get; set; }
 
+        static string GrassImagePath = @"../../Images/Grass.jpg";
+
         public Level(int width, int height)
         {
             // create the level container
@@ -43,11 +45,13 @@ namespace Level
             {
                 // create row containers
                 this.elements.Add(new List<LevelElement>());
-
+                
                 for (int j = 0; j < height; ++j)
                 {
-                    // create LevelElements and fill the rows with them
-                    this.elements[i].Add(new LevelElement());
+                    // create Level Elements and fill the rows with them
+                    this.elements[i].Add(new LevelElement(GrassImagePath));
+                    // initialise the created Level Element
+                    this.elements[i][j].Init();
                 }
             }
 
