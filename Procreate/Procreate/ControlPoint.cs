@@ -32,8 +32,10 @@ namespace Procreate
     {
         public Level.Level Level { get; set; }
         //TEMP
-        static int LevelWidth = 32;
-        static int LevelHeight = 32;
+        static int GridWidth = 620;
+        static int GridHeight = 620;
+        static int LevelWidth = GridWidth / 32;
+        static int LevelHeight = GridHeight / 32;
         //TEMP
 
         public ControlPoint()

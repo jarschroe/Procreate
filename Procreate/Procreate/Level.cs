@@ -34,7 +34,7 @@ namespace Level
         public int width { get; set; }
         public int height { get; set; }
 
-        static string GrassImagePath = @"../../Images/Grass.jpg";
+        static string GrassImagePath = "pack://siteoforigin:,,,/Images/Grass.jpg";
 
         public Level(int width, int height)
         {
@@ -50,8 +50,6 @@ namespace Level
                 {
                     // create Level Elements and fill the rows with them
                     this.elements[i].Add(new LevelElement(GrassImagePath));
-                    // initialise the created Level Element
-                    this.elements[i][j].Init();
                 }
             }
 

@@ -9,8 +9,11 @@
 
         <DataTemplate x:Key="LevelElement">
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="{Binding Path=Name}"></TextBlock>
-                <Image Source="{Binding Path=Image}"></Image>
+                <Image>
+                    <Image.Source>
+                        <BitmapImage UriSource="{Binding ImagePath}"/>
+                    </Image.Source>
+                </Image>
             </StackPanel>
         </DataTemplate>
         
@@ -94,7 +97,7 @@
         <ScrollViewer Background="LightGray" Grid.Column="1" HorizontalAlignment="Left" Height="620" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="120"/>
         <Button Content="Generate" Grid.Column="1" HorizontalAlignment="Left" Margin="10,635,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Height="22"/>
         
-        <Grid Name="LevelGrid" HorizontalAlignment="Left" Height="659" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="621">
+        <Grid Name="LevelGrid" HorizontalAlignment="Left" Height="620" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="620">
             <ItemsControl x:Name="Level" ItemTemplate="{DynamicResource Level}"/>
         </Grid>
     </Grid>
