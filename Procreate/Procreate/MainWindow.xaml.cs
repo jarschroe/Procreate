@@ -67,6 +67,9 @@ namespace Procreate
 
         private void AlgorithmComboBox_DropDownClosed_1(object sender, EventArgs e)
         {
+            // clear the previous parameter controls displayed to the user
+            ParameterGrid.Children.Clear();
+
             switch (AlgorithmComboBox.Text)
             {
                 // adjust Method GUI to suit parameters for the chosen algorithm type
