@@ -41,7 +41,7 @@
             <ColumnDefinition Width="250"/>
         </Grid.ColumnDefinitions>
         <TabControl Grid.Column="2" Height="659" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Left" Width="230">
-            <TabItem Header="Method">
+            <TabItem Header="Method" x:Name="Method">
                 <Grid Background="#FFE5E5E5">
                     <Button Content="New" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75"/>
                     <Grid HorizontalAlignment="Left" Height="210" Margin="10,37,0,0" VerticalAlignment="Top" Width="170">
@@ -49,8 +49,21 @@
                         <Label Content="Algorithm:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,41,0,0"/>
                         <Label Content="Parameters:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,72,0,0"/>
                         <TextBox HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="82" Margin="76,13,0,0"/>
-                        <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="82" Margin="76,45,0,0"/>
-                        <Button Content="Save" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="10,178,0,0"/>
+                        <ComboBox 
+                            Name ="AlgorithmComboBox" 
+                            HorizontalAlignment="Left" 
+                            VerticalAlignment="Top" 
+                            Width="82" 
+                            Margin="76,45,0,0"
+                            DropDownClosed="AlgorithmComboBox_DropDownClosed_1"
+                        />
+                        <Button Content="Save" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="10,243,0,-55"/>
+                    </Grid>
+                    <Grid Name="ParameterGrid" HorizontalAlignment="Left" Height="119" Margin="25,142,0,0" VerticalAlignment="Top" Width="155">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" MinWidth="64"/>
+                            <ColumnDefinition Width="91"/>
+                        </Grid.ColumnDefinitions>
                     </Grid>
                 </Grid>
             </TabItem>
@@ -91,7 +104,7 @@
         </TabControl>
         <Menu HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="1016" Grid.ColumnSpan="3">
             <MenuItem Header="File">
-                <MenuItem Header="Exit"></MenuItem>
+                <MenuItem Header="Exit" x:Name="Exit" Click="Exit_Click_1"></MenuItem>
             </MenuItem>
         </Menu>
         <ScrollViewer Background="LightGray" Grid.Column="1" HorizontalAlignment="Left" Height="620" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="120"/>

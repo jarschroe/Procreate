@@ -22,39 +22,30 @@
 
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Controls;
 
 namespace Generation
 {
-    enum AlgorithmType
+    class MethodFactory
     {
-        RANDOMISE_LEVEL,
-        CELLULAR_AUTOMATA,
-        WALKERS
-    }
+        public List<Method> Methods { get; private set; }
 
-    // List of supported procedural generation algorithms
-    public class AlgorithmComboBoxValues : ObservableCollection<string>
-    {
-        // code from http://msdn.microsoft.com/en-us/library/system.windows.controls.combobox(v=vs.110).aspx
-        public AlgorithmComboBoxValues()
+        MethodFactory()
         {
-            Add("Randomise Level");
-            Add("Cellular Automata");
-            Add("Walkers");
+            Methods = new List<Method>();
         }
-    }
 
-    abstract class Algorithm
-    {
-        public List<Algorithm> PreAlgorithms { get; set; }
+        public Method CreateMethod()
+        {
+            Method method = new Method();
+            Methods.Add(method);
+            return method;
+        }
 
-        public abstract void Generate();
         public void Serialise() { }
         public void Load() { }
+        public void Reset() { }
     }
 }

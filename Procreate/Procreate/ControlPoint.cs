@@ -31,6 +31,7 @@ namespace Procreate
     public class ControlPoint
     {
         public Level.Level Level { get; set; }
+        public Generation.AlgorithmComboBoxValues Algorithms { get; set; }
         //TEMP
         static int GridWidth = 620;
         static int GridHeight = 620;
@@ -41,6 +42,7 @@ namespace Procreate
         public ControlPoint()
         {
             this.Level = new Level.Level(LevelWidth, LevelHeight);
+            this.Algorithms = new Generation.AlgorithmComboBoxValues();
         }
     }
 }
