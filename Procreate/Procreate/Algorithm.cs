@@ -49,7 +49,7 @@ namespace Generation
         }
     }
 
-    abstract class Algorithm
+    public abstract class Algorithm
     {
         public List<Algorithm> PreAlgorithms { get; set; }
 

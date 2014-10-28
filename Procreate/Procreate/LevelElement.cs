@@ -20,15 +20,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Controls;
-using System.Windows.Media.Imaging;
-using System.Drawing;
-
 namespace Level
 {
     public class LevelElement
@@ -36,6 +27,10 @@ namespace Level
         public string Name { get; set; }
         public string Type { get; set; }
         public string ImagePath { get; set; }
+
+        public LevelElement()
+        {
+        }
 
         public LevelElement(string path)
         {

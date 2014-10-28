@@ -1,0 +1,9 @@
+TODO:
+
+RandomiseLevel.cs -
+- Generate() error message for no items in the pool
+- Generate() error for candidate game object's chance not being valid
+- GameObjectChancePair() could I use the game object's chance, instead of using two separate chance values?
+
+GameObject.cs - 
+- GameObject() error if appear rate isn't between 0-100

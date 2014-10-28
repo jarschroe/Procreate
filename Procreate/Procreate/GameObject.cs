@@ -20,15 +20,9 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace Generation
 {
-    class GameObject 
+    public class GameObject 
     {
         public string Name { get; set; }
         public string Type { get; set; }
@@ -36,8 +30,29 @@ namespace Generation
         public string ImagePath { get; set; }
         public int AppearRate { get; set; }
 
+        public GameObject()
+        {
+        }
+
+        public GameObject(string name, string imagePath, int appearRate)
+        {
+            this.Name = name;
+            this.ImagePath = imagePath;
+            // TODO: error if appear rate isn't between 0-100
+            this.AppearRate = appearRate;
+        }
+
         public void Generate() { }
         public void Serialise() { }
         public void Load() { }
+
+        static public implicit operator Level.LevelElement(GameObject toConvert)
+        {
+            Level.LevelElement converted = new Level.LevelElement();
+            converted.Name = toConvert.Name;
+            converted.Type = toConvert.Type;
+            converted.ImagePath = toConvert.ImagePath;
+            return converted;
+        }
     }
 }

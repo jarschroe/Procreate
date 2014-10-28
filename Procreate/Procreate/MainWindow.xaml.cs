@@ -22,6 +22,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -42,7 +43,7 @@ namespace Procreate
     /// </summary>
     public partial class MainWindow : Window
     {
-        public ControlPoint ControlPoint { get; set; }
+        public static ControlPoint ControlPoint { get; set; }
 
         static int TextBoxWidth = 82;
         static int TextBoxHeight = 23;
@@ -52,11 +53,11 @@ namespace Procreate
             InitializeComponent();
 
             // load Jared's Procreate software
-            this.ControlPoint = new ControlPoint();
+            ControlPoint = new ControlPoint();
 
-            Level.ItemsSource = this.ControlPoint.Level.elements;
+            LevelItems.ItemsSource = ControlPoint.Level.Elements;
             // set the algorithm type values for the combo box
-            AlgorithmComboBox.ItemsSource = this.ControlPoint.Algorithms;
+            AlgorithmComboBox.ItemsSource = ControlPoint.Algorithms;
         }
 
         private void Exit_Click_1(object sender, RoutedEventArgs e)
@@ -76,6 +77,17 @@ namespace Procreate
                 // TODO: access names from a program-wide array rather than magic values
                 case "Randomise Level":
                     {
+                        // debugging Randomise level algorithm
+                        Generation.RandomiseLevel rl = new Generation.RandomiseLevel();
+                        Generation.GameObject grass = new Generation.GameObject("grass", Level.Level.GrassImagePath, 50);
+                        Generation.GameObjectChancePair grassPair = new Generation.GameObjectChancePair(grass, 0);
+                        Generation.GameObject sand = new Generation.GameObject("sand", Level.Level.SandImagePath, 50);
+                        Generation.GameObjectChancePair sandPair = new Generation.GameObjectChancePair(sand, 100);
+
+                        rl.GameObjectPool.Add(grassPair);
+                        rl.GameObjectPool.Add(sandPair);
+
+                        rl.Generate();
                         break;
                     }
                 case "Cellular Automata":

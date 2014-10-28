@@ -30,31 +30,32 @@ namespace Level
 {
     public class Level
     {
-        public List<List<LevelElement>> elements { get; set; }
-        public int width { get; set; }
-        public int height { get; set; }
+        public List<List<LevelElement>> Elements { get; set; }
+        public int Width { get; set; }
+        public int Height { get; set; }
 
-        static string GrassImagePath = "pack://siteoforigin:,,,/Images/Grass.jpg";
+        public static string GrassImagePath = "pack://siteoforigin:,,,/Images/Grass.jpg";
+        public static string SandImagePath = "pack://siteoforigin:,,,/Images/Sand.jpg";
 
         public Level(int width, int height)
         {
             // create the level container
-            this.elements = new List<List<LevelElement>>();
+            this.Elements = new List<List<LevelElement>>();
 
             for (int i = 0; i < height; ++i)
             {
                 // create row containers
-                this.elements.Add(new List<LevelElement>());
+                this.Elements.Add(new List<LevelElement>());
                 
                 for (int j = 0; j < height; ++j)
                 {
                     // create Level Elements and fill the rows with them
-                    this.elements[i].Add(new LevelElement(GrassImagePath));
+                    this.Elements[i].Add(new LevelElement(GrassImagePath));
                 }
             }
 
-            this.width = width;
-            this.height = height;
+            this.Width = width;
+            this.Height = height;
         }
 
         public void Reset() { }
