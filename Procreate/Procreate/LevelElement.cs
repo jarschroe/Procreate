@@ -20,13 +20,34 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
+
 namespace Level
 {
-    public class LevelElement
+    public class LevelElement : INotifyPropertyChanged
     {
         public string Name { get; set; }
         public string Type { get; set; }
-        public string ImagePath { get; set; }
+        public string imagePath { get; set; }
+
+        public string ImagePath
+        {
+            get
+            {
+                return this.imagePath;
+            }
+            set
+            {
+                if (value != this.imagePath)
+                {
+                    this.imagePath = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
 
         public LevelElement()
         {
@@ -36,6 +57,14 @@ namespace Level
         {
             this.Name = "Name";
             this.ImagePath = path;
+        }
+
+        public void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
         }
 
         public void Serialise() { }

@@ -11,7 +11,7 @@
             <StackPanel Orientation="Horizontal">
                 <Image>
                     <Image.Source>
-                        <BitmapImage UriSource="{Binding ImagePath, UpdateSourceTrigger=PropertyChanged}" CacheOption="OnLoad"  CreateOptions="IgnoreImageCache"/>
+                        <BitmapImage UriSource="{Binding imagePath, UpdateSourceTrigger=PropertyChanged}" CacheOption="OnLoad"  CreateOptions="IgnoreImageCache"/>
                     </Image.Source>
                 </Image>
             </StackPanel>
