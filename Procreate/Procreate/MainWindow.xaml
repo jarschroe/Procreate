@@ -1,8 +1,6 @@
 ﻿<Window x:Class="Procreate.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:c="clr-namespace:Procreate"
-        xmlns:l="clr-namespace:Level"
         Title="Procreate" Height="768" Width="1024">
     
     <Window.Resources>
