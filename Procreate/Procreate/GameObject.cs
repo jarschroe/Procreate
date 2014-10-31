@@ -48,10 +48,7 @@ namespace Generation
 
         static public implicit operator Level.LevelElement(GameObject toConvert)
         {
-            Level.LevelElement converted = new Level.LevelElement();
-            converted.Name = toConvert.Name;
-            converted.Type = toConvert.Type;
-            converted.ImagePath = toConvert.ImagePath;
+            Level.LevelElement converted = new Level.LevelElement(toConvert);
             return converted;
         }
     }

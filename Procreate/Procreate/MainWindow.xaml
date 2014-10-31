@@ -5,18 +5,14 @@
     
     <Window.Resources>
 
-        <DataTemplate x:Key="LevelElement">
-            <StackPanel Orientation="Horizontal">
-                <Image>
-                    <Image.Source>
-                        <BitmapImage UriSource="{Binding imagePath, UpdateSourceTrigger=PropertyChanged}" CacheOption="OnLoad"  CreateOptions="IgnoreImageCache"/>
-                    </Image.Source>
-                </Image>
+        <DataTemplate x:Key="LevelRow">
+            <StackPanel Orientation="Vertical">
+                <Image Source="{Binding Path=Image.Source}"/>
             </StackPanel>
         </DataTemplate>
         
         <DataTemplate x:Key="Level">
-            <ItemsControl ItemsSource="{Binding UpdateSourceTrigger=PropertyChanged}" ItemTemplate="{DynamicResource LevelElement}">
+            <ItemsControl ItemsSource="{Binding UpdateSourceTrigger=PropertyChanged}" ItemTemplate="{DynamicResource LevelRow}">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
                         <StackPanel Orientation="Horizontal"/>
@@ -109,7 +105,7 @@
         <Button Content="Generate" Grid.Column="1" HorizontalAlignment="Left" Margin="10,635,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Height="22"/>
         
         <Grid Name="LevelGrid" HorizontalAlignment="Left" Height="620" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="620">
-            <ItemsControl x:Name="LevelItems" ItemsSource="{Binding UpdateSourceTrigger=PropertyChanged }" ItemTemplate="{DynamicResource Level}" />
+            <ItemsControl x:Name="LevelElements"  ItemTemplate="{DynamicResource Level}"/>
         </Grid>
     </Grid>
 </Window>

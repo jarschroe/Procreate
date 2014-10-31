@@ -55,7 +55,7 @@ namespace Procreate
             // load Jared's Procreate software
             ControlPoint = new ControlPoint();
 
-            LevelItems.ItemsSource = ControlPoint.Level.Elements;
+            LevelElements.ItemsSource = ControlPoint.Level.Elements;
             // set the algorithm type values for the combo box
             AlgorithmComboBox.ItemsSource = ControlPoint.Algorithms;
         }
@@ -80,14 +80,15 @@ namespace Procreate
                         // debugging Randomise level algorithm
                         Generation.RandomiseLevel rl = new Generation.RandomiseLevel();
                         Generation.GameObject grass = new Generation.GameObject("grass", Level.Level.GrassImagePath, 50);
-                        Generation.GameObjectChancePair grassPair = new Generation.GameObjectChancePair(grass, 0);
+                        Generation.GameObjectChancePair grassPair = new Generation.GameObjectChancePair(grass, 75);
                         Generation.GameObject sand = new Generation.GameObject("sand", Level.Level.SandImagePath, 50);
-                        Generation.GameObjectChancePair sandPair = new Generation.GameObjectChancePair(sand, 100);
+                        Generation.GameObjectChancePair sandPair = new Generation.GameObjectChancePair(sand, 25);
 
                         rl.GameObjectPool.Add(grassPair);
                         rl.GameObjectPool.Add(sandPair);
 
                         rl.Generate();
+                        UpdateLevelView();
                         break;
                     }
                 case "Cellular Automata":
@@ -115,6 +116,15 @@ namespace Procreate
                         break;
                     }
             }
+        }
+
+        /// <summary>
+        /// Forces an updated level to be redrawn
+        /// </summary>
+        private void UpdateLevelView()
+        {
+            LevelElements.ItemsSource = null;
+            LevelElements.ItemsSource = ControlPoint.Level.Elements;
         }
     }
 }

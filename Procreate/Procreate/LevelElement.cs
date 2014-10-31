@@ -20,51 +20,40 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
+using System;
+using System.Windows.Controls;
+using System.Windows.Media.Imaging;
 
 namespace Level
 {
-    public class LevelElement : INotifyPropertyChanged
+    public class LevelElement
     {
         public string Name { get; set; }
         public string Type { get; set; }
-        public string imagePath { get; set; }
-
-        public string ImagePath
-        {
-            get
-            {
-                return this.imagePath;
-            }
-            set
-            {
-                if (value != this.imagePath)
-                {
-                    this.imagePath = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
+        public Image Image { get; set; }
+        public string ImagePath { get; set; }
 
         public LevelElement()
         {
+        }
+
+        public LevelElement(Generation.GameObject toConvert)
+        {
+            Name = toConvert.Name;
+            Type = toConvert.Type;
+            ImagePath = toConvert.ImagePath;
+            Image = new Image();
+            BitmapImage bitmap = new BitmapImage(new Uri(toConvert.ImagePath));
+            Image.Source = bitmap;
         }
 
         public LevelElement(string path)
         {
             this.Name = "Name";
             this.ImagePath = path;
-        }
-
-        public void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-            }
+            Image = new Image();
+            BitmapImage bitmap = new BitmapImage(new Uri(path));
+            Image.Source = bitmap;
         }
 
         public void Serialise() { }
