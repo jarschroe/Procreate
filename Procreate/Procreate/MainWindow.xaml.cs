@@ -21,20 +21,8 @@
 // THE SOFTWARE.
 
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Procreate
 {
@@ -80,9 +68,9 @@ namespace Procreate
                         // debugging Randomise level algorithm
                         Generation.RandomiseLevel rl = new Generation.RandomiseLevel();
                         Generation.GameObject grass = new Generation.GameObject("grass", Level.Level.GrassImagePath, 50);
-                        Generation.GameObjectChancePair grassPair = new Generation.GameObjectChancePair(grass, 75);
+                        Generation.GameObjectChancePair grassPair = new Generation.GameObjectChancePair(grass, 50);
                         Generation.GameObject sand = new Generation.GameObject("sand", Level.Level.SandImagePath, 50);
-                        Generation.GameObjectChancePair sandPair = new Generation.GameObjectChancePair(sand, 25);
+                        Generation.GameObjectChancePair sandPair = new Generation.GameObjectChancePair(sand, 50);
 
                         rl.GameObjectPool.Add(grassPair);
                         rl.GameObjectPool.Add(sandPair);
@@ -105,6 +93,9 @@ namespace Procreate
                         iterationsTextBox.Height = TextBoxHeight;
                         ParameterGrid.Children.Add(iterationsTextBox);
 
+                        Generation.CellularAutomata cellAuto = new Generation.CellularAutomata();
+                        cellAuto.Generate();
+                        UpdateLevelView();
                         break;
                     }
                 case "Walkers":

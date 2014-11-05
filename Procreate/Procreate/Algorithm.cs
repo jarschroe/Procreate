@@ -53,6 +53,11 @@ namespace Generation
     {
         public List<Algorithm> PreAlgorithms { get; set; }
 
+        public Algorithm()
+        {
+            PreAlgorithms = new List<Algorithm>();
+        }
+
         public abstract void Generate();
         public void Serialise() { }
         public void Load() { }

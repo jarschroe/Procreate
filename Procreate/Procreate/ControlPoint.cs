@@ -33,10 +33,10 @@ namespace Procreate
         public Level.Level Level { get; set; }
         public Generation.AlgorithmComboBoxValues Algorithms { get; set; }
         //TEMP
-        static int GridWidth = 620;
-        static int GridHeight = 620;
-        static int LevelWidth = GridWidth / 32;
-        static int LevelHeight = GridHeight / 32;
+        public static int GridWidth = 620;
+        public static int GridHeight = 620;
+        public static int LevelWidth = 64;
+        public static int LevelHeight = 64;
         //TEMP
 
         public ControlPoint()

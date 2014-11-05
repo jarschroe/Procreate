@@ -32,6 +32,8 @@ namespace Level
 
         public static string GrassImagePath = "pack://siteoforigin:,,,/Images/Grass.jpg";
         public static string SandImagePath = "pack://siteoforigin:,,,/Images/Sand.jpg";
+        public static string WallImagePath = "pack://siteoforigin:,,,/Images/Wall.jpg";
+        public static string FloorImagePath = "pack://siteoforigin:,,,/Images/Floor.jpg";
 
         public Level(int width, int height)
         {
@@ -57,5 +59,6 @@ namespace Level
         public void Reset() { }
         public void Serialise() { }
         public void Load() { }
+
     }
 }

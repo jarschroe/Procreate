@@ -43,7 +43,11 @@ namespace Level
             Type = toConvert.Type;
             ImagePath = toConvert.ImagePath;
             Image = new Image();
-            BitmapImage bitmap = new BitmapImage(new Uri(toConvert.ImagePath));
+            BitmapImage bitmap = new BitmapImage();
+            bitmap.BeginInit();
+            bitmap.UriSource = new Uri(toConvert.ImagePath);
+            bitmap.DecodePixelWidth = Procreate.ControlPoint.GridWidth / Procreate.ControlPoint.LevelWidth;
+            bitmap.EndInit();
             Image.Source = bitmap;
         }
 
@@ -52,7 +56,11 @@ namespace Level
             this.Name = "Name";
             this.ImagePath = path;
             Image = new Image();
-            BitmapImage bitmap = new BitmapImage(new Uri(path));
+            BitmapImage bitmap = new BitmapImage();
+            bitmap.BeginInit();
+            bitmap.UriSource = new Uri(path);
+            bitmap.DecodePixelWidth = Procreate.ControlPoint.GridWidth / Procreate.ControlPoint.LevelWidth;
+            bitmap.EndInit();
             Image.Source = bitmap;
         }
 
