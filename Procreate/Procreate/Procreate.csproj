@@ -55,6 +55,7 @@
     </ApplicationDefinition>
     <Compile Include="CellularAutomata.cs" />
     <Compile Include="RandomiseLevel.cs" />
+    <Compile Include="Walkers.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

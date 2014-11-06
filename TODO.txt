@@ -7,3 +7,6 @@ RandomiseLevel.cs -
 
 GameObject.cs - 
 - GameObject() error if appear rate isn't between 0-100
+
+Walkers.cs
+- Walker.Step() error for walker's change direction chance not being valid

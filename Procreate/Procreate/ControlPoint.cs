@@ -20,18 +20,13 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace Procreate
 {
     public class ControlPoint
     {
         public Level.Level Level { get; set; }
         public Generation.AlgorithmComboBoxValues Algorithms { get; set; }
+        public Generation.GameObjectFactory GameObjectFactory { get; private set; }
         //TEMP
         public static int GridWidth = 620;
         public static int GridHeight = 620;
@@ -43,6 +38,7 @@ namespace Procreate
         {
             this.Level = new Level.Level(LevelWidth, LevelHeight);
             this.Algorithms = new Generation.AlgorithmComboBoxValues();
+            GameObjectFactory = new Generation.GameObjectFactory();
         }
     }
 }

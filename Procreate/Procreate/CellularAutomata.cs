@@ -42,10 +42,19 @@ namespace Generation
 
             // add the randomise level pre-algorithm
             Generation.RandomiseLevel randomise = new RandomiseLevel();
-            Generation.GameObject floor = new Generation.GameObject(FloorDummy, Level.Level.FloorImagePath, 50);
+
+            GameObject floor = Procreate.MainWindow.ControlPoint.GameObjectFactory.CreateGameObject();
+            floor.Name = FloorDummy;
+            floor.ImagePath = Level.Level.FloorImagePath;
+            floor.AppearRate = 50;
             Generation.GameObjectChancePair floorPair = new Generation.GameObjectChancePair(floor, FloorChance);
-            Generation.GameObject wall = new Generation.GameObject(WallDummy, Level.Level.WallImagePath, 50);
+
+            GameObject wall = Procreate.MainWindow.ControlPoint.GameObjectFactory.CreateGameObject();
+            wall.Name = WallDummy;
+            wall.ImagePath = Level.Level.WallImagePath;
+            wall.AppearRate = 50;
             Generation.GameObjectChancePair wallPair = new Generation.GameObjectChancePair(wall, WallChance);
+
             randomise.GameObjectPool.Add(floorPair);
             randomise.GameObjectPool.Add(wallPair);
             PreAlgorithms.Add(randomise);
