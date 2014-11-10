@@ -100,6 +100,9 @@ namespace Procreate
                     }
                 case "Walkers":
                     {
+                        Generation.Walkers walkers = new Generation.Walkers();
+                        walkers.Generate();
+                        UpdateLevelView();
                         break;
                     }
                 default:

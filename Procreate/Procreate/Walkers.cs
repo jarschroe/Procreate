@@ -21,6 +21,7 @@
 // THE SOFTWARE.
 
 using System;
+using System.Collections.Generic;
 
 namespace Generation
 {
@@ -45,11 +46,17 @@ namespace Generation
         // Members used if walkers create rooms upon death
         public int RoomRadius;
 
-        public Walker()
+        static Random random = new Random();
+
+        public Walker(int life, int changeDirectionChance, int radius, int roomRadius)
         {
+            Life = life;
+            ChangeDirectionChance = changeDirectionChance;
+            Radius = radius;
+            RoomRadius = roomRadius;
+
             // place walker in random location in the level
             Level.Level level = Procreate.MainWindow.ControlPoint.Level;
-            Random random = new Random();
             X = random.Next(0, level.Elements[0].Count - 1);
             Y = random.Next(0, level.Elements.Count - 1);
 
@@ -59,22 +66,19 @@ namespace Generation
             TrailType.ImagePath = Level.Level.FloorImagePath;
             TrailType.AppearRate = 100;
 
-            // defaults
-            Radius = 1;
-            ChangeDirectionChance = 25;
-            RoomRadius = 1;
+            // random direction
+            Direction = (Direction)random.Next(0, 3);
         }
 
         public void Step()
         {
-            Random random = new Random();
             int chance = random.Next(1, 100);
 
             // randomally change direction
             // make sure the walker's chance is valid (between 0-100)
             if (ChangeDirectionChance >= 0 && ChangeDirectionChance <= 100)
             {
-                if (ChangeDirectionChance <= chance)
+                if (chance <= ChangeDirectionChance)
                 {
                     // change direction
                     Direction = (Direction)random.Next(0, 3);
@@ -85,20 +89,20 @@ namespace Generation
                 // step once in direction, wrapping the level if required
                 if (Direction == Generation.Direction.LEFT)
                 {
-                    X = (--X + level.Elements[0].Count - 1) % (level.Elements[0].Count - 1);
+                    X = (--X + level.Elements[0].Count) % (level.Elements[0].Count);
                 }
                 else if (Direction == Generation.Direction.RIGHT)
                 {
-                    X = ++X % (level.Elements[0].Count - 1);
+                    X = ++X % (level.Elements[0].Count);
 
                 }
                 else if (Direction == Generation.Direction.UP)
                 {
-                    Y = (--Y + level.Elements.Count - 1) % (level.Elements.Count - 1);
+                    Y = (--Y + level.Elements.Count) % (level.Elements.Count);
                 }
                 else if (Direction == Generation.Direction.DOWN)
                 {
-                    Y = ++Y % (level.Elements.Count - 1);
+                    Y = ++Y % (level.Elements.Count);
                 }
 
                 // apply walker's trail to current location
@@ -119,18 +123,76 @@ namespace Generation
         }
     }
 
-    class Walkers : Algorithm
+    public class Walkers : Algorithm
     {
+        List<Walker> WalkerList;
+        public int MinWalkers;
+        public int MaxWalkers;
+        // walker attributes
+        public int MinLife;
+        public int MaxLife;
+        public int MinChangeDirectionChance;
+        public int MaxChangeDirectionChance;
+        public int WalkerRadius;
+        // create rooms attributes
+        public int ChanceOfDeath;
         public bool CreateRoomsUponDeath;
+        public int MinRoomRadius;
+        public int MaxRoomRadius;
 
         public Walkers()
         {
+            // default values
+            MinWalkers = 20;
+            MaxWalkers = 40;
+            MinLife = 500;
+            MaxLife = 800;
+            MinChangeDirectionChance = 30;
+            MaxChangeDirectionChance = 80;
+            WalkerRadius = 1;
+            ChanceOfDeath = 1;
             CreateRoomsUponDeath = false;
+            MinRoomRadius = 2;
+            MaxRoomRadius = 5;
+
+            Random random = new Random();
+            // create the walkers
+            int walkerCount = random.Next(MinWalkers, MaxWalkers);
+            WalkerList = new List<Walker>(walkerCount);
+
+            for (int i = 0; i < walkerCount; ++i)
+            {
+                WalkerList.Add(new Walker(random.Next(MinLife, MaxLife), random.Next(MinChangeDirectionChance, MaxChangeDirectionChance), WalkerRadius, random.Next(MinRoomRadius, MaxRoomRadius)));
+            }
         }
 
         public override void Generate()
         {
+            Random random = new Random();
 
+            while (WalkerList.Count > 0)
+            {
+                for (int i = 0; i < WalkerList.Count; ++i)
+                {
+                    // update the walker
+                    Walker walker = WalkerList[i];
+                    walker.Step();
+
+                    // see if the walker has died
+
+                    if (walker.Life <= 0 || random.Next(1, 100) <= ChanceOfDeath)
+                    {
+                        // walker has died
+                        if (CreateRoomsUponDeath)
+                        {
+                            walker.CreateRoom();
+                        }
+
+                        // remove the walker
+                        WalkerList.RemoveAt(i);
+                    }
+                }
+            }
         }
     }
 }
