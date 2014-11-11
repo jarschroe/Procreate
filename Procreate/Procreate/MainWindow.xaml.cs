@@ -45,21 +45,27 @@ namespace Procreate
 
             LevelElements.ItemsSource = ControlPoint.Level.Elements;
             // set the algorithm type values for the combo box
-            AlgorithmComboBox.ItemsSource = ControlPoint.Algorithms;
+            MethodAlgorithm.ItemsSource = ControlPoint.Algorithms;
         }
 
-        private void Exit_Click_1(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// Forces an updated level to be redrawn
+        /// </summary>
+        private void UpdateLevelView()
         {
-            // close the application (code from http://stackoverflow.com/questions/2820357/how-to-exit-a-wpf-app-programmatically)
-            this.Close();
+            LevelElements.ItemsSource = null;
+            LevelElements.ItemsSource = ControlPoint.Level.Elements;
         }
 
-        private void AlgorithmComboBox_DropDownClosed_1(object sender, EventArgs e)
+        /// <summary>
+        /// Updates the Procreate GUI to have the parameter labels relevant to the selected algorithm type
+        /// </summary>
+        private void UpdateAlgorithmParameterLabels()
         {
             // clear the previous parameter controls displayed to the user
             ParameterGrid.Children.Clear();
 
-            switch (AlgorithmComboBox.Text)
+            switch (MethodAlgorithm.Text)
             {
                 // adjust Method GUI to suit parameters for the chosen algorithm type
                 // TODO: access names from a program-wide array rather than magic values
@@ -112,13 +118,25 @@ namespace Procreate
             }
         }
 
-        /// <summary>
-        /// Forces an updated level to be redrawn
-        /// </summary>
-        private void UpdateLevelView()
+        private void NewMethodButton_Click(object sender, RoutedEventArgs e)
         {
-            LevelElements.ItemsSource = null;
-            LevelElements.ItemsSource = ControlPoint.Level.Elements;
+            // create a new method
+            Generation.Method method = ControlPoint.MethodFactory.CreateMethod();
+            MethodName.Text = method.Name;
+            MethodAlgorithm.Text = ControlPoint.Algorithms[(int)method.AlgorithmType];
+            // update GUI labels for the method's parameters
+            UpdateAlgorithmParameterLabels();
+        }
+
+        private void Exit_Click_1(object sender, RoutedEventArgs e)
+        {
+            // close the application (code from http://stackoverflow.com/questions/2820357/how-to-exit-a-wpf-app-programmatically)
+            this.Close();
+        }
+
+        private void MethodAlgorithm_DropDownClosed_1(object sender, EventArgs e)
+        {
+            UpdateAlgorithmParameterLabels();
         }
     }
 }

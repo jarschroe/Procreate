@@ -20,21 +20,63 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace Generation
 {
-    class Method
+    public class Method
     {
         public string Name { get; set; }
-        public Algorithm Algorithm { get; set; }
-        public AlgorithmType AlgorithmType { get; set; }
+        public Algorithm Algorithm { get; private set; }
 
-        public void Generate() { }
+        AlgorithmType algorithmType;
+        public AlgorithmType AlgorithmType
+        {
+            get
+            {
+                return algorithmType;
+            }
+            set
+            {
+                // adjust algorithm according to the chosen algorithm type
+                if (algorithmType != value)
+                {
+                    switch (value)
+                    {
+                        case AlgorithmType.RANDOMISE_LEVEL:
+                            {
+                                Algorithm = new RandomiseLevel();
+                                break;
+                            }
+                        case AlgorithmType.CELLULAR_AUTOMATA:
+                            {
+                                Algorithm = new CellularAutomata();
+                                break;
+                            }
+                        case AlgorithmType.WALKERS:
+                            {
+                                Algorithm = new Walkers();
+                                break;
+                            }
+                    }
+
+                    algorithmType = value;
+                }
+            }
+        }
+
+        public Method()
+        {
+            // default empty name
+            Name = "New Method";
+            // default to Randomise Level algorithm
+            AlgorithmType = Generation.AlgorithmType.RANDOMISE_LEVEL;
+        }
+
+        public void Generate()
+        {
+            // generate level with the algorithm
+            Algorithm.Generate();
+        }
+
         public void Serialise() { }
         public void Load() { }
     }

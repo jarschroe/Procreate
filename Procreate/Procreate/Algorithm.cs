@@ -30,7 +30,7 @@ using System.Windows.Controls;
 
 namespace Generation
 {
-    enum AlgorithmType
+    public enum AlgorithmType
     {
         RANDOMISE_LEVEL,
         CELLULAR_AUTOMATA,

@@ -27,6 +27,7 @@ namespace Procreate
         public Level.Level Level { get; set; }
         public Generation.AlgorithmComboBoxValues Algorithms { get; set; }
         public Generation.GameObjectFactory GameObjectFactory { get; private set; }
+        public Generation.MethodFactory MethodFactory { get; private set; }
         //TEMP
         public static int GridWidth = 620;
         public static int GridHeight = 620;
@@ -39,6 +40,7 @@ namespace Procreate
             this.Level = new Level.Level(LevelWidth, LevelHeight);
             this.Algorithms = new Generation.AlgorithmComboBoxValues();
             GameObjectFactory = new Generation.GameObjectFactory();
+            MethodFactory = new Generation.MethodFactory();
         }
     }
 }

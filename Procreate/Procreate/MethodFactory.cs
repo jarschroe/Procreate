@@ -20,19 +20,15 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Generation
 {
-    class MethodFactory
+    public class MethodFactory
     {
         public List<Method> Methods { get; private set; }
 
-        MethodFactory()
+        public MethodFactory()
         {
             Methods = new List<Method>();
         }

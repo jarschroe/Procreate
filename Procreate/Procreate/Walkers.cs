@@ -25,7 +25,7 @@ using System.Collections.Generic;
 
 namespace Generation
 {
-    enum Direction
+    public enum Direction
     {
         LEFT,
         RIGHT,
@@ -33,7 +33,7 @@ namespace Generation
         DOWN
     }
 
-    class Walker
+    public class Walker
     {
         public int Life;
         public int ChangeDirectionChance;
@@ -46,7 +46,7 @@ namespace Generation
         // Members used if walkers create rooms upon death
         public int RoomRadius;
 
-        static Random random = new Random();
+        static Random Random = new Random();
 
         public Walker(int life, int changeDirectionChance, int radius, int roomRadius)
         {
@@ -57,8 +57,8 @@ namespace Generation
 
             // place walker in random location in the level
             Level.Level level = Procreate.MainWindow.ControlPoint.Level;
-            X = random.Next(0, level.Elements[0].Count - 1);
-            Y = random.Next(0, level.Elements.Count - 1);
+            X = Random.Next(0, level.Elements[0].Count - 1);
+            Y = Random.Next(0, level.Elements.Count - 1);
 
             // default trail type
             TrailType = Procreate.MainWindow.ControlPoint.GameObjectFactory.CreateGameObject();
@@ -67,12 +67,12 @@ namespace Generation
             TrailType.AppearRate = 100;
 
             // random direction
-            Direction = (Direction)random.Next(0, 3);
+            Direction = (Direction)Random.Next(0, 3);
         }
 
         public void Step()
         {
-            int chance = random.Next(1, 100);
+            int chance = Random.Next(1, 100);
 
             // randomally change direction
             // make sure the walker's chance is valid (between 0-100)
@@ -81,7 +81,7 @@ namespace Generation
                 if (chance <= ChangeDirectionChance)
                 {
                     // change direction
-                    Direction = (Direction)random.Next(0, 3);
+                    Direction = (Direction)Random.Next(0, 3);
                 }
 
                 Level.Level level = Procreate.MainWindow.ControlPoint.Level;
