@@ -42,15 +42,23 @@
                         <Label Name="MethodNameLabel" Content="Name:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0"/>
                         <Label Content="Algorithm:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,41,0,0"/>
                         <Label Content="Parameters:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,72,0,0"/>
-                        <TextBox Name="MethodName" Text="" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="82" Margin="76,13,0,0"/>
+                        <TextBox
+                            Name="MethodName"
+                            Text="{Binding Path=Name, Mode=TwoWay}"
+                            HorizontalAlignment="Left" 
+                            Height="23" TextWrapping="Wrap" 
+                            VerticalAlignment="Top" 
+                            Width="82" 
+                            Margin="76,13,0,0">
+                        </TextBox>
                         <ComboBox 
                             Name="MethodAlgorithm" 
                             HorizontalAlignment="Left" 
                             VerticalAlignment="Top" 
                             Width="82" 
                             Margin="76,45,0,0"
-                            DropDownClosed="MethodAlgorithm_DropDownClosed_1"
-                        />
+                            DropDownClosed="MethodAlgorithm_DropDownClosed_1">
+                        </ComboBox>
                         <Button Content="Save" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="10,243,0,-55"/>
                     </Grid>
                     <Grid Name="ParameterGrid" HorizontalAlignment="Left" Height="119" Margin="25,142,0,0" VerticalAlignment="Top" Width="155">

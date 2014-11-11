@@ -36,6 +36,8 @@ namespace Procreate
         static int TextBoxWidth = 82;
         static int TextBoxHeight = 23;
 
+        Generation.Method FocusedMethod;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -43,9 +45,15 @@ namespace Procreate
             // load Jared's Procreate software
             ControlPoint = new ControlPoint();
 
+            // bind the level data to the application
             LevelElements.ItemsSource = ControlPoint.Level.Elements;
             // set the algorithm type values for the combo box
             MethodAlgorithm.ItemsSource = ControlPoint.Algorithms;
+
+            // default focused method
+            FocusedMethod = ControlPoint.MethodFactory.CreateMethod();
+            // bind the method name data to the application
+            MethodName.DataContext = FocusedMethod;
         }
 
         /// <summary>
@@ -121,9 +129,9 @@ namespace Procreate
         private void NewMethodButton_Click(object sender, RoutedEventArgs e)
         {
             // create a new method
-            Generation.Method method = ControlPoint.MethodFactory.CreateMethod();
-            MethodName.Text = method.Name;
-            MethodAlgorithm.Text = ControlPoint.Algorithms[(int)method.AlgorithmType];
+            FocusedMethod = ControlPoint.MethodFactory.CreateMethod();
+            //MethodName.Text = FocusedMethod.Name;
+            MethodAlgorithm.Text = ControlPoint.Algorithms[(int)FocusedMethod.AlgorithmType];
             // update GUI labels for the method's parameters
             UpdateAlgorithmParameterLabels();
         }
@@ -136,6 +144,26 @@ namespace Procreate
 
         private void MethodAlgorithm_DropDownClosed_1(object sender, EventArgs e)
         {
+            // update the method's algorithm
+            switch (MethodAlgorithm.Text)
+            {
+                case "Randomise Level":
+                    {
+                        FocusedMethod.AlgorithmType = Generation.AlgorithmType.RANDOMISE_LEVEL;
+                        break;
+                    }
+                case "Cellular Automata":
+                    {
+                        FocusedMethod.AlgorithmType = Generation.AlgorithmType.CELLULAR_AUTOMATA;
+                        break;
+                    }
+                case "Walkers":
+                    {
+                        FocusedMethod.AlgorithmType = Generation.AlgorithmType.WALKERS;
+                        break;
+                    }
+            }
+
             UpdateAlgorithmParameterLabels();
         }
     }
