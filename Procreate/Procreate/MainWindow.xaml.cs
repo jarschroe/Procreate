@@ -95,22 +95,22 @@ namespace Procreate
                     {
                         // add Cellular Automata algorithm parameters to the GUI
                         // iteration count
-                        Label iterationsLabel = new Label();
-                        iterationsLabel.Content = "Iterations:";
-                        ParameterGrid.Children.Add(iterationsLabel);
-                        TextBox iterationsTextBox = new TextBox();
-                        iterationsTextBox.VerticalAlignment = System.Windows.VerticalAlignment.Top;
-                        iterationsTextBox.Margin = new Thickness(82, 0, 0, 0);
-                        iterationsTextBox.Width = TextBoxWidth;
-                        iterationsTextBox.Height = TextBoxHeight;
-                        iterationsTextBox.DataContext = FocusedMethod.Algorithm;
+                        Label iterations = new Label();
+                        iterations.Content = "Iterations:";
+                        ParameterGrid.Children.Add(iterations);
+                        TextBox iterationsData = new TextBox();
+                        iterationsData.VerticalAlignment = System.Windows.VerticalAlignment.Top;
+                        iterationsData.Margin = new Thickness(82, 0, 0, 0);
+                        iterationsData.Width = TextBoxWidth;
+                        iterationsData.Height = TextBoxHeight;
+                        iterationsData.DataContext = FocusedMethod.Algorithm;
                         // binding code based on code at:
                         // http://msdn.microsoft.com/en-us/library/ms598270(v=vs.110).aspx &
                         // http://stackoverflow.com/questions/8415481/two-way-binding-for-textbox
-                        Binding bind = new Binding("IterationCount");
-                        bind.Mode = BindingMode.TwoWay;
-                        iterationsTextBox.SetBinding(TextBox.TextProperty, bind);
-                        ParameterGrid.Children.Add(iterationsTextBox);
+                        Binding iterationsBind = new Binding("IterationCount");
+                        iterationsBind.Mode = BindingMode.TwoWay;
+                        iterationsData.SetBinding(TextBox.TextProperty, iterationsBind);
+                        ParameterGrid.Children.Add(iterationsData);
 
                         break;
                     }
