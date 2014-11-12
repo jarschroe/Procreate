@@ -126,19 +126,19 @@ namespace Generation
     public class Walkers : Algorithm
     {
         List<Walker> WalkerList;
-        public int MinWalkers;
-        public int MaxWalkers;
+        public int MinWalkers { get; set; }
+        public int MaxWalkers { get; set; }
         // walker attributes
-        public int MinLife;
-        public int MaxLife;
-        public int MinChangeDirectionChance;
-        public int MaxChangeDirectionChance;
-        public int WalkerRadius;
+        public int MinLife { get; set; }
+        public int MaxLife { get; set; }
+        public int MinChangeDirectionChance { get; set; }
+        public int MaxChangeDirectionChance { get; set; }
+        public int WalkerRadius { get; set; }
         // create rooms attributes
-        public int ChanceOfDeath;
-        public bool CreateRoomsUponDeath;
-        public int MinRoomRadius;
-        public int MaxRoomRadius;
+        public int ChanceOfDeath { get; set; }
+        public bool CreateRoomsUponDeath { get; set; }
+        public int MinRoomRadius { get; set; }
+        public int MaxRoomRadius { get; set; }
 
         public Walkers()
         {

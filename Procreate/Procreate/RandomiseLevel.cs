@@ -41,7 +41,7 @@ namespace Generation
 
     public class RandomiseLevel : Generation.Algorithm
     {
-        public List<GameObjectChancePair> GameObjectPool;
+        public List<GameObjectChancePair> GameObjectPool { get; set; }
 
         public RandomiseLevel()
         {

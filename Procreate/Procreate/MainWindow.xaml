@@ -59,14 +59,14 @@
                             Margin="76,45,0,0"
                             DropDownClosed="MethodAlgorithm_DropDownClosed_1">
                         </ComboBox>
-                        <Button Content="Save" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="10,243,0,-55"/>
                     </Grid>
-                    <Grid Name="ParameterGrid" HorizontalAlignment="Left" Height="119" Margin="25,142,0,0" VerticalAlignment="Top" Width="155">
+                    <Grid Name="ParameterGrid" HorizontalAlignment="Left" Height="407" Margin="25,142,0,0" VerticalAlignment="Top" Width="155">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" MinWidth="64"/>
                             <ColumnDefinition Width="91"/>
                         </Grid.ColumnDefinitions>
                     </Grid>
+                    <Button Content="Save" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="25,568,0,0"/>
                 </Grid>
             </TabItem>
             <TabItem Header="GameObject">

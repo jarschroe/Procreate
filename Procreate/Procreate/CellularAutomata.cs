@@ -24,9 +24,9 @@ using System.Linq;
 
 namespace Generation
 {
-    class CellularAutomata : Algorithm
+    public class CellularAutomata : Algorithm
     {
-        public int IterationCount;
+        public int IterationCount { get; set; }
 
         static int DefaultIterationCount = 1;
         // TEMP: floor/wall game objects

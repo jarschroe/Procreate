@@ -23,6 +23,7 @@
 using System;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 
 namespace Procreate
 {
@@ -35,6 +36,7 @@ namespace Procreate
 
         static int TextBoxWidth = 82;
         static int TextBoxHeight = 23;
+        static int DefaultParamDataLeftMargin = 110;
 
         Generation.Method FocusedMethod;
 
@@ -76,47 +78,141 @@ namespace Procreate
             switch (MethodAlgorithm.Text)
             {
                 // adjust Method GUI to suit parameters for the chosen algorithm type
-                // TODO: access names from a program-wide array rather than magic values
+                // TODO: access algorithm names from a program-wide array rather than magic values
+                // TODO: see if parameter labels can be templated in XAML, then loaded in code rather than created - maybe with data templates?
                 case "Randomise Level":
                     {
-                        // debugging Randomise level algorithm
-                        Generation.RandomiseLevel rl = new Generation.RandomiseLevel();
-                        Generation.GameObject grass = new Generation.GameObject("grass", Level.Level.GrassImagePath, 50);
-                        Generation.GameObjectChancePair grassPair = new Generation.GameObjectChancePair(grass, 50);
-                        Generation.GameObject sand = new Generation.GameObject("sand", Level.Level.SandImagePath, 50);
-                        Generation.GameObjectChancePair sandPair = new Generation.GameObjectChancePair(sand, 50);
+                        // add Cellular Automata algorithm parameters to the GUI
+                        // game object pool
+                        Label pool = new Label();
+                        pool.Content = "Game object pool:";
+                        ParameterGrid.Children.Add(pool);
+                        // TODO: figure out how to do game object pool data
 
-                        rl.GameObjectPool.Add(grassPair);
-                        rl.GameObjectPool.Add(sandPair);
-
-                        rl.Generate();
-                        UpdateLevelView();
                         break;
                     }
                 case "Cellular Automata":
                     {
+                        // add Cellular Automata algorithm parameters to the GUI
+                        // iteration count
                         Label iterationsLabel = new Label();
                         iterationsLabel.Content = "Iterations:";
                         ParameterGrid.Children.Add(iterationsLabel);
-
-                        // TODO: default iteration count
                         TextBox iterationsTextBox = new TextBox();
                         iterationsTextBox.VerticalAlignment = System.Windows.VerticalAlignment.Top;
                         iterationsTextBox.Margin = new Thickness(82, 0, 0, 0);
                         iterationsTextBox.Width = TextBoxWidth;
                         iterationsTextBox.Height = TextBoxHeight;
+                        iterationsTextBox.DataContext = FocusedMethod.Algorithm;
+                        // binding code based on code at:
+                        // http://msdn.microsoft.com/en-us/library/ms598270(v=vs.110).aspx &
+                        // http://stackoverflow.com/questions/8415481/two-way-binding-for-textbox
+                        Binding bind = new Binding("IterationCount");
+                        bind.Mode = BindingMode.TwoWay;
+                        iterationsTextBox.SetBinding(TextBox.TextProperty, bind);
                         ParameterGrid.Children.Add(iterationsTextBox);
 
-                        Generation.CellularAutomata cellAuto = new Generation.CellularAutomata();
-                        cellAuto.Generate();
-                        UpdateLevelView();
                         break;
                     }
                 case "Walkers":
                     {
-                        Generation.Walkers walkers = new Generation.Walkers();
-                        walkers.Generate();
-                        UpdateLevelView();
+                        // add Walkers algorithm parameters to the GUI
+                        // minumum walkers
+                        Label minWalkers = new Label();
+                        minWalkers.Content = "Min walkers:";
+                        ParameterGrid.Children.Add(minWalkers);
+                        TextBox minWalkersData = new TextBox();
+                        minWalkersData.VerticalAlignment = System.Windows.VerticalAlignment.Top;
+                        minWalkersData.Margin = new Thickness(DefaultParamDataLeftMargin, 0, 0, 0);
+                        minWalkersData.Width = TextBoxWidth;
+                        minWalkersData.Height = TextBoxHeight;
+                        minWalkersData.DataContext = FocusedMethod.Algorithm;
+                        Binding minWalkersBind = new Binding("MinWalkers");
+                        minWalkersBind.Mode = BindingMode.TwoWay;
+                        minWalkersData.SetBinding(TextBox.TextProperty, minWalkersBind);
+                        ParameterGrid.Children.Add(minWalkersData);
+
+                        // maximum walkers
+                        Label maxWalkers = new Label();
+                        maxWalkers.Content = "Max walkers:";
+                        maxWalkers.Margin = new Thickness(0, 35, 0, 0);
+                        ParameterGrid.Children.Add(maxWalkers);
+                        TextBox maxWalkersData = new TextBox();
+                        maxWalkersData.VerticalAlignment = System.Windows.VerticalAlignment.Top;
+                        maxWalkersData.Margin = new Thickness(DefaultParamDataLeftMargin, 35, 0, 0);
+                        maxWalkersData.Width = TextBoxWidth;
+                        maxWalkersData.Height = TextBoxHeight;
+                        maxWalkersData.DataContext = FocusedMethod.Algorithm;
+                        Binding maxWalkersBind = new Binding("MaxWalkers");
+                        maxWalkersBind.Mode = BindingMode.TwoWay;
+                        maxWalkersData.SetBinding(TextBox.TextProperty, maxWalkersBind);
+                        ParameterGrid.Children.Add(maxWalkersData);
+
+                        // minimum life
+                        Label minLife = new Label();
+                        minLife.Content = "Min Walker Life:";
+                        minLife.Margin = new Thickness(0, 70, 0, 0);
+                        ParameterGrid.Children.Add(minLife);
+                        TextBox minLifeData = new TextBox();
+                        minLifeData.VerticalAlignment = System.Windows.VerticalAlignment.Top;
+                        minLifeData.Margin = new Thickness(DefaultParamDataLeftMargin, 70, 0, 0);
+                        minLifeData.Width = TextBoxWidth;
+                        minLifeData.Height = TextBoxHeight;
+                        minLifeData.DataContext = FocusedMethod.Algorithm;
+                        Binding minLifeBind = new Binding("MinLife");
+                        minLifeBind.Mode = BindingMode.TwoWay;
+                        minLifeData.SetBinding(TextBox.TextProperty, minLifeBind);
+                        ParameterGrid.Children.Add(minLifeData);
+
+                        // maximum life
+                        Label maxLife = new Label();
+                        maxLife.Content = "Max Walker Life:";
+                        maxLife.Margin = new Thickness(0, 105, 0, 0);
+                        ParameterGrid.Children.Add(maxLife);
+                        TextBox maxLifeData = new TextBox();
+                        maxLifeData.VerticalAlignment = System.Windows.VerticalAlignment.Top;
+                        maxLifeData.Margin = new Thickness(DefaultParamDataLeftMargin, 105, 0, 0);
+                        maxLifeData.Width = TextBoxWidth;
+                        maxLifeData.Height = TextBoxHeight;
+                        maxLifeData.DataContext = FocusedMethod.Algorithm;
+                        Binding maxLifeBind = new Binding("MaxLife");
+                        maxLifeBind.Mode = BindingMode.TwoWay;
+                        maxLifeData.SetBinding(TextBox.TextProperty, maxLifeBind);
+                        ParameterGrid.Children.Add(maxLifeData);
+
+                        // minimum chance of changing direction
+                        Label minChangeDirChance = new Label();
+                        minChangeDirChance.Content = "Min Chance to\nChange Direction:";
+                        minChangeDirChance.Margin = new Thickness(0, 140, 0, 0);
+                        ParameterGrid.Children.Add(minChangeDirChance);
+                        TextBox minChangeDirChanceData = new TextBox();
+                        minChangeDirChanceData.VerticalAlignment = System.Windows.VerticalAlignment.Top;
+                        minChangeDirChanceData.Margin = new Thickness(DefaultParamDataLeftMargin, 150, 0, 0);
+                        minChangeDirChanceData.Width = TextBoxWidth;
+                        minChangeDirChanceData.Height = TextBoxHeight;
+                        minChangeDirChanceData.DataContext = FocusedMethod.Algorithm;
+                        Binding minChangeDirChanceBind = new Binding("MinChangeDirectionChance");
+                        minChangeDirChanceBind.Mode = BindingMode.TwoWay;
+                        minChangeDirChanceData.SetBinding(TextBox.TextProperty, minChangeDirChanceBind);
+                        ParameterGrid.Children.Add(minChangeDirChanceData);
+
+                        // maxiumum chance of changing direction
+                        Label maxChangeDirChance = new Label();
+                        maxChangeDirChance.Content = "Max Chance to\nChange Direction:";
+                        maxChangeDirChance.Margin = new Thickness(0, 185, 0, 0);
+                        ParameterGrid.Children.Add(maxChangeDirChance);
+                        TextBox maxChangeDirChanceData = new TextBox();
+                        maxChangeDirChanceData.VerticalAlignment = System.Windows.VerticalAlignment.Top;
+                        maxChangeDirChanceData.Margin = new Thickness(DefaultParamDataLeftMargin, 196, 0, 0);
+                        maxChangeDirChanceData.Width = TextBoxWidth;
+                        maxChangeDirChanceData.Height = TextBoxHeight;
+                        maxChangeDirChanceData.DataContext = FocusedMethod.Algorithm;
+                        Binding maxChangeDirChanceBind = new Binding("MaxChangeDirectionChance");
+                        maxChangeDirChanceBind.Mode = BindingMode.TwoWay;
+                        maxChangeDirChanceData.SetBinding(TextBox.TextProperty, maxChangeDirChanceBind);
+                        ParameterGrid.Children.Add(maxChangeDirChanceData);
+
+                        // TODO: walkers radius and death-related parameters
                         break;
                     }
                 default:
@@ -130,7 +226,6 @@ namespace Procreate
         {
             // create a new method
             FocusedMethod = ControlPoint.MethodFactory.CreateMethod();
-            //MethodName.Text = FocusedMethod.Name;
             MethodAlgorithm.Text = ControlPoint.Algorithms[(int)FocusedMethod.AlgorithmType];
             // update GUI labels for the method's parameters
             UpdateAlgorithmParameterLabels();
