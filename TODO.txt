@@ -10,3 +10,9 @@ GameObject.cs -
 
 Walkers.cs
 - Walker.Step() error for walker's change direction chance not being valid
+
+MainWindow.xaml.cs
+
+-UpdateAlgorithmParameterLabels() access algorithm names from a program-wide array rather than magic values
+-UpdateAlgorithmParameterLabels() see if parameter labels can be templated in XAML, then loaded in code rather than created - maybe with data templates?
+-UpdateAlgorithmParameterLabels() walkers radius and death-related parameters
