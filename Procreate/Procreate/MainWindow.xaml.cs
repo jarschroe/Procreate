@@ -38,7 +38,10 @@ namespace Procreate
         static int TextBoxHeight = 23;
         static int DefaultParamDataLeftMargin = 110;
 
+        // Context menu objects
         Generation.Method FocusedMethod;
+        // Game object menu
+        Generation.GameObject FocusedGameObject;
 
         public MainWindow()
         {
@@ -53,9 +56,15 @@ namespace Procreate
             MethodAlgorithm.ItemsSource = ControlPoint.Algorithms;
 
             // default focused method
-            FocusedMethod = ControlPoint.MethodFactory.CreateMethod();
             // bind the method name data to the application
             MethodName.DataContext = FocusedMethod;
+            // default focused game object
+            FocusedGameObject = ControlPoint.GameObjectFactory.CreateGameObject();
+            // bind game object attribute data to the application
+            GameObjectName.DataContext = FocusedGameObject;
+            GameObjectType.DataContext = FocusedGameObject;
+            GameObjectImagePath.DataContext = FocusedGameObject;
+            GameObjectAppearRate.DataContext = FocusedGameObject;
         }
 
         /// <summary>
@@ -260,6 +269,12 @@ namespace Procreate
             }
 
             UpdateAlgorithmParameterLabels();
+        }
+
+        private void NewGameObjectButton_Click(object sender, RoutedEventArgs e)
+        {
+            // create a new game object
+            FocusedGameObject = ControlPoint.GameObjectFactory.CreateGameObject();
         }
     }
 }

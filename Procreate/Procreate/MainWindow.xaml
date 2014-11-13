@@ -71,17 +71,17 @@
             </TabItem>
             <TabItem Header="GameObject">
                 <Grid Background="#FFE5E5E5">
-                    <Button Content="New" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75"/>
+                    <Button Name="NewGameObjectButton" Content="New" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75" Click="NewGameObjectButton_Click"/>
                     <Grid HorizontalAlignment="Left" Height="377" Margin="10,37,0,0" VerticalAlignment="Top" Width="170">
                         <Label Content="Name:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0"/>
                         <Label Content="Type:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,41,0,0"/>
                         <Label Content="Image:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,72,0,0"/>
-                        <TextBox HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="106" Margin="54,13,0,0"/>
+                        <TextBox Name="GameObjectName" Text="{Binding Path=Name, Mode=TwoWay}" HorizontalAlignment="Left" Height="23" VerticalAlignment="Top" Width="106" Margin="54,13,0,0"/>
                         <Button Content="Save" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="9,345,0,0"/>
-                        <TextBox HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="104" Margin="56,43,0,0"/>
-                        <TextBox TextWrapping="Wrap" Text="TextBox" Margin="56,75,10,279"/>
-                        <Label Content="Appearance:" Margin="10,103,84,248"/>
-                        <TextBox TextWrapping="Wrap" Text="50" Margin="86,106,40,248"/>
+                        <TextBox Name="GameObjectType" Text="{Binding Path=Type, Mode=TwoWay}" HorizontalAlignment="Left" Height="23" VerticalAlignment="Top" Width="104" Margin="56,43,0,0"/>
+                        <TextBox Name="GameObjectImagePath" Text="{Binding Path=ImagePath, Mode=TwoWay}" Margin="56,75,10,279"/>
+                        <Label Content="Appear Rate:" Margin="10,103,84,248"/>
+                        <TextBox Name="GameObjectAppearRate" Text="{Binding Path=AppearRate, Mode=TwoWay}" Margin="86,106,40,248"/>
                         <Label Content="%" Margin="130,104,15,247"/>
                         <Label Content="Preview:" Margin="9,134,108,217"/>
                         <Image Margin="10,165,10,62" />

@@ -24,6 +24,12 @@ namespace Generation
 {
     public class GameObject 
     {
+        // default values
+        static string DefaultName = "New Game Object";
+        static string DefaultType = "New Type";
+        static string DefaultImagePath = Procreate.MainWindow.ControlPoint.ImagePathPrefix + "Images/Default.jpg";
+        static int DefaultAppearRate = 50;
+
         public string Name { get; set; }
         public string Type { get; set; }
         // TODO: Image attribute
@@ -32,6 +38,10 @@ namespace Generation
 
         public GameObject()
         {
+            Name = DefaultName;
+            Type = DefaultType;
+            ImagePath = DefaultImagePath;
+            AppearRate = DefaultAppearRate;
         }
 
         public GameObject(string name, string imagePath, int appearRate)

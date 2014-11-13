@@ -34,6 +34,7 @@ namespace Procreate
         public static int LevelWidth = 64;
         public static int LevelHeight = 64;
         //TEMP
+        public string ImagePathPrefix = "pack://siteoforigin:,,,/";
 
         public ControlPoint()
         {
