@@ -22,19 +22,32 @@
 
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Generation
 {
-    class Generator
+    public class Generator
     {
-        public List<Method> Methods { get; private set; }
+        public ObservableCollection<Method> Methods { get; private set; }
         public List<GameObject> GameObjects { get; private set; }
 
+        public Generator()
+        {
+            Methods = new ObservableCollection<Method>();
+            GameObjects = new List<GameObject>();
+        }
+
         public void Generate() { }
-        public void AddMethod(Method method, Method before, Method after) { }
+
+        public void AddMethod(Method method)
+        {
+            // add a copy of the Method
+            Methods.Add(method);
+        }
+
         public void AddGameObject(GameObject gameObject, GameObject before, GameObject after) { }
         public void RemoveMethod(Method method) { }
         public void RemoveGameObject(GameObject gameObject) { }

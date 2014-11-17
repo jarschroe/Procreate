@@ -36,9 +36,9 @@
         </Grid.ColumnDefinitions>
         <TabControl Grid.Column="2" Height="659" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Left" Width="230">
             <TabItem Header="Method" x:Name="Method">
-                <Grid Background="#FFE5E5E5">
+                <Grid Background="#FFE5E5E5"> 
                     <Button Name ="NewMethodButton" Content="New" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75" Click="NewMethodButton_Click"/>
-                    <Grid HorizontalAlignment="Left" Height="210" Margin="10,37,0,0" VerticalAlignment="Top" Width="170">
+                    <Grid HorizontalAlignment="Left" Height="580" Margin="10,37,0,0" VerticalAlignment="Top" Width="200">
                         <Label Name="MethodNameLabel" Content="Name:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0"/>
                         <Label Content="Algorithm:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,41,0,0"/>
                         <Label Content="Parameters:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,72,0,0"/>
@@ -66,40 +66,43 @@
                             <ColumnDefinition Width="91"/>
                         </Grid.ColumnDefinitions>
                     </Grid>
-                    <Button Content="Save" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="25,568,0,0"/>
+                    <Button Content="Save" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="105,585,0,0"/>
+                    <Button Name="AddMethodToGenerator" Content="Add" Click="AddMethodToGenerator_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="25,585,0,0"/>
                 </Grid>
             </TabItem>
             <TabItem Header="GameObject">
                 <Grid Background="#FFE5E5E5">
                     <Button Name="NewGameObjectButton" Content="New" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75" Click="NewGameObjectButton_Click"/>
-                    <Grid HorizontalAlignment="Left" Height="377" Margin="10,37,0,0" VerticalAlignment="Top" Width="170">
+                    <Grid HorizontalAlignment="Left" Height="444" Margin="10,37,0,0" VerticalAlignment="Top" Width="200">
                         <Label Content="Name:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0"/>
                         <Label Content="Type:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,41,0,0"/>
                         <Label Content="Image:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,72,0,0"/>
-                        <TextBox Name="GameObjectName" Text="{Binding Path=Name, Mode=TwoWay}" HorizontalAlignment="Left" Height="23" VerticalAlignment="Top" Width="106" Margin="54,13,0,0"/>
-                        <Button Content="Save" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="9,345,0,0"/>
+                        <TextBox Name="GameObjectName" Text="{Binding Path=Name, Mode=TwoWay}" HorizontalAlignment="Left" Height="23" VerticalAlignment="Top" Width="104" Margin="56,13,0,0"/>
+                        <Button Content="Save" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="110,412,0,0"/>
+                        <Button Name="AddGameObjectToGenerator" Content="Add" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="10,412,0,0"/>
                         <TextBox Name="GameObjectType" Text="{Binding Path=Type, Mode=TwoWay}" HorizontalAlignment="Left" Height="23" VerticalAlignment="Top" Width="104" Margin="56,43,0,0"/>
-                        <TextBox Name="GameObjectImagePath" Text="{Binding Path=ImagePath, Mode=TwoWay}" Margin="56,75,10,279"/>
+                        <TextBox Name="GameObjectImagePath" Text="{Binding Path=ImagePath, UpdateSourceTrigger=PropertyChanged}" Margin="56,75,40,346"/>
+                        <Button Name="OpenGameObjectImage" Content="..." Margin="165,75,10,346" Click="OpenGameObjectImage_Click"/>
                         <Label Content="Appear Rate:" Margin="10,103,84,248"/>
-                        <TextBox Name="GameObjectAppearRate" Text="{Binding Path=AppearRate, Mode=TwoWay}" Margin="86,106,40,248"/>
-                        <Label Content="%" Margin="130,104,15,247"/>
-                        <Label Content="Preview:" Margin="9,134,108,217"/>
-                        <Image Margin="10,165,10,62" />
+                        <TextBox Name="GameObjectAppearRate" Text="{Binding Path=AppearRate, Mode=TwoWay}" Margin="86,106,84,315"/>
+                        <Label Content="%" Margin="116,103,54,316"/>
+                        <Label Content="Preview:" Margin="9,134,129,284"/>
+                        <Image Name="GameObjectPreview" Source="{Binding Path=Image.Source}" Margin="10,165,15,104" />
                     </Grid>
                 </Grid>
             </TabItem>
             <TabItem Header="LevelElement">
                 <Grid Background="#FFE5E5E5">
-                    <Grid HorizontalAlignment="Left" Height="377" Margin="10,37,0,0" VerticalAlignment="Top" Width="170">
+                    <Grid HorizontalAlignment="Left" Height="444" Margin="10,37,0,0" VerticalAlignment="Top" Width="200">
                         <Label Content="Name:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0"/>
                         <Label Content="Type:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,41,0,0"/>
                         <Label Content="Image:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,72,0,0"/>
                         <TextBox HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="106" Margin="54,13,0,0"/>
                         <Button Content="Save" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="10,345,0,0"/>
                         <TextBox HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="104" Margin="56,43,0,0"/>
-                        <TextBox TextWrapping="Wrap" Text="TextBox" Margin="56,75,10,279"/>
-                        <Label Content="Preview:" Margin="10,98,107,253"/>
-                        <Image Margin="10,124,10,103"/>
+                        <TextBox TextWrapping="Wrap" Text="TextBox" Margin="56,75,40,346"/>
+                        <Label Content="Preview:" Margin="10,98,134,317"/>
+                        <Image Margin="10,132,15,137"/>
                     </Grid>
                 </Grid>
             </TabItem>
@@ -109,7 +112,18 @@
                 <MenuItem Header="Exit" x:Name="Exit" Click="Exit_Click_1"></MenuItem>
             </MenuItem>
         </Menu>
-        <ScrollViewer Background="LightGray" Grid.Column="1" HorizontalAlignment="Left" Height="620" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="120"/>
+        <ListBox 
+            Name="GeneratorMethodList" 
+            Margin="10,10,10,49" 
+            Grid.Row="1" 
+            Grid.Column="1" 
+            ScrollViewer.VerticalScrollBarVisibility="Visible">
+            <ListBox.ItemTemplate>
+            <DataTemplate>
+                <Button Name="GenerationMethod" Content="{Binding Name}" Click="GenerationMethod_Click"/>
+            </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>   
         <Button Content="Generate" Grid.Column="1" HorizontalAlignment="Left" Margin="10,635,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Height="22"/>
         
         <Grid Name="LevelGrid" HorizontalAlignment="Left" Height="620" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="620">

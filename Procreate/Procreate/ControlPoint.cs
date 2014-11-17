@@ -28,6 +28,7 @@ namespace Procreate
         public Generation.AlgorithmComboBoxValues Algorithms { get; set; }
         public Generation.GameObjectFactory GameObjectFactory { get; private set; }
         public Generation.MethodFactory MethodFactory { get; private set; }
+        public Generation.Generator Generator { get; private set; }
         //TEMP
         public static int GridWidth = 620;
         public static int GridHeight = 620;
@@ -38,10 +39,11 @@ namespace Procreate
 
         public ControlPoint()
         {
-            this.Level = new Level.Level(LevelWidth, LevelHeight);
-            this.Algorithms = new Generation.AlgorithmComboBoxValues();
+            Level = new Level.Level(LevelWidth, LevelHeight);
+            Algorithms = new Generation.AlgorithmComboBoxValues();
             GameObjectFactory = new Generation.GameObjectFactory();
             MethodFactory = new Generation.MethodFactory();
+            Generator = new Generation.Generator();
         }
     }
 }

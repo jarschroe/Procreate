@@ -5,11 +5,17 @@
 *.user
 *.sln.docstates
 
-#Build results
+# Build files
+*.exe
+*.config
+*.manifest
+*.pdb
 
-[Dd]ebug/
-[Rr]elease/
+#Build results (some commented out for now, for committing new images)
+
+#[Dd]ebug/
+#[Rr]elease/
 x64/
 build/
-[Bb]in/
+#[Bb]in/
 [Oo]bj/

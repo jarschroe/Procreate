@@ -37,6 +37,7 @@ namespace Procreate
         static int TextBoxWidth = 82;
         static int TextBoxHeight = 23;
         static int DefaultParamDataLeftMargin = 110;
+        const string OpenImageFilter = "Image Files (.jpg, .jpeg, .png, .bmp) | *.jpg; *.jpeg; *.png; *.bmp";
 
         // Context menu objects
         Generation.Method FocusedMethod;
@@ -57,14 +58,18 @@ namespace Procreate
 
             // default focused method
             // bind the method name data to the application
+            // default focused method and game object
+            FocusedMethod = ControlPoint.MethodFactory.CreateMethod();
             MethodName.DataContext = FocusedMethod;
-            // default focused game object
             FocusedGameObject = ControlPoint.GameObjectFactory.CreateGameObject();
             // bind game object attribute data to the application
             GameObjectName.DataContext = FocusedGameObject;
             GameObjectType.DataContext = FocusedGameObject;
             GameObjectImagePath.DataContext = FocusedGameObject;
             GameObjectAppearRate.DataContext = FocusedGameObject;
+            GameObjectPreview.DataContext = FocusedGameObject;
+            // bind the generator's lists
+            GeneratorMethodList.ItemsSource = ControlPoint.Generator.Methods;
         }
 
         /// <summary>
@@ -235,6 +240,7 @@ namespace Procreate
         {
             // create a new method
             FocusedMethod = ControlPoint.MethodFactory.CreateMethod();
+            MethodName.DataContext = FocusedMethod;
             MethodAlgorithm.Text = ControlPoint.Algorithms[(int)FocusedMethod.AlgorithmType];
             // update GUI labels for the method's parameters
             UpdateAlgorithmParameterLabels();
@@ -275,6 +281,38 @@ namespace Procreate
         {
             // create a new game object
             FocusedGameObject = ControlPoint.GameObjectFactory.CreateGameObject();
+        }
+
+        private void OpenGameObjectImage_Click(object sender, RoutedEventArgs e)
+        {
+            // create a file dialog to view images in the explorer
+            // code referenced from http://msdn.microsoft.com/en-us/library/microsoft.win32.openfiledialog.aspx
+            Microsoft.Win32.OpenFileDialog openImage = new Microsoft.Win32.OpenFileDialog();
+            // filter to use certain image files
+            openImage.Filter = OpenImageFilter;
+
+            // show open image dialog
+            Nullable<bool> result = openImage.ShowDialog();
+
+            if (result == true)
+            {
+                // load selected image
+                FocusedGameObject.ImagePath = openImage.FileName;
+            }
+        }
+
+        private void AddMethodToGenerator_Click(object sender, RoutedEventArgs e)
+        {
+            // add the method to the generator
+            ControlPoint.Generator.AddMethod(FocusedMethod);
+            // reset 
+            FocusedMethod = ControlPoint.MethodFactory.CreateMethod(FocusedMethod);
+            MethodName.DataContext = FocusedMethod;
+        }
+
+        private void GenerationMethod_Click(object sender, RoutedEventArgs e)
+        {
+            // TODO: focus on the clicked method
         }
     }
 }

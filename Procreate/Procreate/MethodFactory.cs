@@ -40,6 +40,13 @@ namespace Generation
             return method;
         }
 
+        public Method CreateMethod(Method copy)
+        {
+            Method method = new Method(copy);
+            Methods.Add(method);
+            return method;
+        }
+
         public void Serialise() { }
         public void Load() { }
         public void Reset() { }

@@ -28,6 +28,7 @@ namespace Generation
         public Algorithm Algorithm { get; private set; }
 
         AlgorithmType algorithmType;
+        private Method method;
         public AlgorithmType AlgorithmType
         {
             get
@@ -69,6 +70,12 @@ namespace Generation
             Name = "New Method";
             // default to Randomise Level algorithm
             AlgorithmType = Generation.AlgorithmType.RANDOMISE_LEVEL;
+        }
+
+        public Method(Method method)
+        {
+            Name = method.Name;
+            AlgorithmType = method.AlgorithmType;
         }
 
         public void Generate()
