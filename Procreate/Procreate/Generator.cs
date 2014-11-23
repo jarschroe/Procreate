@@ -40,7 +40,16 @@ namespace Generation
             GameObjects = new List<GameObject>();
         }
 
-        public void Generate() { }
+        public void Generate()
+        {
+            // generate each of the methods
+            foreach (Method method in Methods)
+            {
+                method.Generate();
+            }
+
+            // TODO: generate each of the game objects
+        }
 
         public void AddMethod(Method method)
         {

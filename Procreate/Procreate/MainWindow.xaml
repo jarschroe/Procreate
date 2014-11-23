@@ -124,7 +124,7 @@
             </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>   
-        <Button Content="Generate" Grid.Column="1" HorizontalAlignment="Left" Margin="10,635,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Height="22"/>
+        <Button Name="Generate" Content="Generate" Grid.Column="1" HorizontalAlignment="Left" Margin="10,635,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Height="22" Click="Generate_Click"/>
         
         <Grid Name="LevelGrid" HorizontalAlignment="Left" Height="620" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="620">
             <ItemsControl x:Name="LevelElements"  ItemTemplate="{DynamicResource Level}"/>

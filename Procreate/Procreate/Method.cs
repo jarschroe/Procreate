@@ -28,7 +28,6 @@ namespace Generation
         public Algorithm Algorithm { get; private set; }
 
         AlgorithmType algorithmType;
-        private Method method;
         public AlgorithmType AlgorithmType
         {
             get
@@ -38,29 +37,43 @@ namespace Generation
             set
             {
                 // adjust algorithm according to the chosen algorithm type
-                if (algorithmType != value)
+                switch (value)
                 {
-                    switch (value)
-                    {
-                        case AlgorithmType.RANDOMISE_LEVEL:
-                            {
-                                Algorithm = new RandomiseLevel();
-                                break;
-                            }
-                        case AlgorithmType.CELLULAR_AUTOMATA:
-                            {
-                                Algorithm = new CellularAutomata();
-                                break;
-                            }
-                        case AlgorithmType.WALKERS:
-                            {
-                                Algorithm = new Walkers();
-                                break;
-                            }
-                    }
+                    case AlgorithmType.RANDOMISE_LEVEL:
+                        {
+                            Algorithm = new RandomiseLevel();
+                            // TEMP - default randomise level values
+                            GameObject grass = Procreate.MainWindow.ControlPoint.GameObjectFactory.CreateGameObject();
+                            grass.Name = "Grass";
+                            grass.ImagePath = Procreate.MainWindow.ControlPoint.ImagePathPrefix + Level.Level.GrassImagePath;
+                            grass.AppearRate = 50;
+                            Generation.GameObjectChancePair grassPair = new Generation.GameObjectChancePair(grass, grass.AppearRate);
 
-                    algorithmType = value;
+                            GameObject sand = Procreate.MainWindow.ControlPoint.GameObjectFactory.CreateGameObject();
+                            sand.Name = "Sand";
+                            sand.ImagePath = Procreate.MainWindow.ControlPoint.ImagePathPrefix + Level.Level.SandImagePath;
+                            sand.AppearRate = 50;
+                            Generation.GameObjectChancePair sandPair = new Generation.GameObjectChancePair(sand, sand.AppearRate);
+
+                            // add the default game object pairs
+                            ((RandomiseLevel)Algorithm).GameObjectPool.Add(grassPair);
+                            ((RandomiseLevel)Algorithm).GameObjectPool.Add(sandPair);
+                            // TEMP
+                            break;
+                        }
+                    case AlgorithmType.CELLULAR_AUTOMATA:
+                        {
+                            Algorithm = new CellularAutomata();
+                            break;
+                        }
+                    case AlgorithmType.WALKERS:
+                        {
+                            Algorithm = new Walkers();
+                            break;
+                        }
                 }
+
+                algorithmType = value;
             }
         }
 

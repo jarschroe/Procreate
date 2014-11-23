@@ -169,6 +169,7 @@ namespace Generation
         public override void Generate()
         {
             Random random = new Random();
+            List<Walker> walkersCopy = new List<Walker>(WalkerList);
 
             while (WalkerList.Count > 0)
             {
@@ -193,6 +194,9 @@ namespace Generation
                     }
                 }
             }
+
+            // respawn walkers for the next level generation
+            WalkerList = walkersCopy;
         }
     }
 }

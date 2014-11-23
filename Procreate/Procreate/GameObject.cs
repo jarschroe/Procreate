@@ -56,6 +56,7 @@ namespace Generation
                     BitmapImage bitmap = new BitmapImage();
                     bitmap.BeginInit();
                     bitmap.UriSource = new Uri(value);
+                    bitmap.DecodePixelWidth = Procreate.ControlPoint.GridWidth / Procreate.ControlPoint.LevelWidth;
                     bitmap.EndInit();
                     Image.Source = bitmap;
                 }

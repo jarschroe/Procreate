@@ -314,5 +314,12 @@ namespace Procreate
         {
             // TODO: focus on the clicked method
         }
+
+        private void Generate_Click(object sender, RoutedEventArgs e)
+        {
+            ControlPoint.Generator.Generate();
+            // update the level view to reflect changes
+            UpdateLevelView();
+        }
     }
 }
